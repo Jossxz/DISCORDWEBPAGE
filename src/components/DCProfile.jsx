@@ -7,7 +7,7 @@ const DiscordProfile = () => {
 const fetchProfile = async () => {
     try {
         {/* VERIFICAÇÃO: Caso não receba os dados == Loading*/}
-        const res = await fetch("http://localhost:3001/discord/profile");
+        const res = await fetch("/api/server");
             if (!res.ok) {
                 setLoading(false);
             return;
