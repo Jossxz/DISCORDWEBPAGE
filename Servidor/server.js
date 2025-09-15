@@ -1,5 +1,4 @@
-// api/discord.js
-import fetch from "node-fetch"; // só necessário se seu Node for <18, se for >=18 pode remover
+import fetch from "node-fetch"; // opcional se Node <18
 
 export default async function handler(req, res) {
   const DISCORD_USER_ID = process.env.DISCORD_USER_ID;
@@ -17,9 +16,12 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
-      const response = await fetch(`https://discord.com/api/v10/users/${DISCORD_USER_ID}`, {
-        headers: { Authorization: `Bot ${DISCORD_TOKEN}` },
-      });
+      const response = await fetch(
+        `https://discord.com/api/v10/users/${DISCORD_USER_ID}`,
+        {
+          headers: { Authorization: `Bot ${DISCORD_TOKEN}` },
+        }
+      );
 
       if (!response.ok) {
         return res.status(500).json({ error: "Erro ao buscar perfil no Discord" });
@@ -35,5 +37,3 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: `Método ${req.method} não permitido` });
   }
 }
-
-app.listen(PORT, () => console.log(`✅ Backend rodando na porta ${PORT}`));
