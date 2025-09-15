@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/MimDe.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const texto = "@Joss";
+        let i = 0;
+        let apagando = false;
+
+        function escrever() {
+          if (!apagando) {
+            // escrevendo
+            document.title = texto.substring(0, i + 1);
+            i++;
+            if (i === texto.length) {
+              apagando = true; // começa a apagar quando completar
+            }
+          } else {
+            // apagando
+            document.title = texto.substring(0, i - 1);
+            i--;
+            if (i === 0) {
+              apagando = false; // começa a escrever de novo
+            }
+          }
+
+          setTimeout(escrever, 200); // velocidade da digitação
+        }
+
+        escrever();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
