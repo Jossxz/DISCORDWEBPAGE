@@ -1,15 +1,12 @@
-import fetch from "node-fetch"; // opcional se Node <18
-
+// api/server.js
 export default async function handler(req, res) {
   const DISCORD_USER_ID = process.env.DISCORD_USER_ID;
   const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
-  // Permitir requisições de qualquer origem (CORS)
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Responder requisições OPTIONS para CORS
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
