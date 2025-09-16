@@ -10,7 +10,7 @@ const DiscordProfile = () => {
       setLoading(true);
       setError(false);
 
-      const res = await fetch("/api/server");
+      const res = await fetch("/api/discord");
       if (!res.ok) {
         setError(true);
         setLoading(false);
